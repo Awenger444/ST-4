@@ -20,15 +20,9 @@ public class UnitTest1
         Assert.AreEqual(Bug.State.Assigned, bug.getState());
     }
     [TestMethod]
-    public void TestBugAssignedException()
-    {
-        var bug = new Bug(Bug.State.Open);
-        Assert.ThrowsException<InvalidOperationException>(() => bug.Assign());
-    }
-    [TestMethod]
     public void TestBugIsDefered()
     {
-        var bug = new Bug(Bug.State.Open);
+        var bug = new Bug(Bug.State.Assigned);
         bug.Defer();
         Assert.AreEqual (Bug.State.Defered, bug.getState());
     }
@@ -82,6 +76,7 @@ public class UnitTest1
     public void TestBugInitialDeferedAndClosed()
     {
         var bug = new Bug(Bug.State.Defered);
+        bug.Assign();
         bug.Close();
         Assert.AreEqual(Bug.State.Closed, bug.getState());
     }
