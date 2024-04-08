@@ -42,7 +42,7 @@ public class UnitTest1
     [TestMethod]
     public void TestBugClosedException()
     {
-        var bug = new Bug(Bug.State.Assigned);
+        var bug = new Bug(Bug.State.Open);
         Assert.ThrowsException<InvalidOperationException>(() => bug.Close());
     }
     [TestMethod]
